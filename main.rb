@@ -20,7 +20,8 @@ playlists.dig("subsonic_response","playlists", "playlist").each do |e|
   playlist = HTTParty.get(url("getPlaylist?id=#{e["id"]}", ARGV))
   entries = playlist.dig("subsonic_response","playlist","entry")
   if entries
-    file = File.open("#{playlist_path}/#{playlist.dig("subsonic_response","playlist","name")}-#{e["id"]}.m3u8", "w")
+    puts filename= "#{playlist_path}/#{playlist.dig("subsonic_response","playlist","name")}-#{e["id"]}.m3u8"
+    file = File.open(filename, "w")
     entries.each do |item|
       path = item["path"]
       path.sub!(remove,"") if remove
