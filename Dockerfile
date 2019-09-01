@@ -1,4 +1,5 @@
 FROM ruby:2.5
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev 
 ENV user=""
 ENV token=""
 ENV salt=""
@@ -14,6 +15,9 @@ WORKDIR /usr/src/app
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
-COPY . .
+COPY main.rb ./
 
-CMD ["./main.rb ${user} ${token} ${salt} ${host} ${path} ${remove} ${add}"]
+RUN echo 'ping localhost &' > /bootstrap.sh
+RUN echo 'sleep infinity' >> /bootstrap.sh
+RUN chmod +x /bootstrap.sh
+RUN ruby ./main.rb ${user} ${token} ${salt} ${host} ${path} ${remove} ${add} &> error
