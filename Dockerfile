@@ -21,3 +21,4 @@ RUN echo 'ping localhost &' > /bootstrap.sh
 RUN echo 'sleep infinity' >> /bootstrap.sh
 RUN chmod +x /bootstrap.sh
 RUN ruby ./main.rb ${user} ${token} ${salt} ${host} ${path} ${remove} ${add} &> error
+CMD exec /bin/sh -c "sleep 500"
