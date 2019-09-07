@@ -20,5 +20,5 @@ COPY main.rb ./
 RUN echo 'ping localhost &' > /bootstrap.sh
 RUN echo 'sleep infinity' >> /bootstrap.sh
 RUN chmod +x /bootstrap.sh
-CMD ruby ./main.rb $user $token $salt $host $path $remove $add
+CMD ruby ./main.rb $user $token $salt $host "$path" "$remove" "$add"
 CMD exec /bin/sh -c "sleep 500"
