@@ -8,7 +8,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.0331)
     multi_xml (0.6.0)
-    rexml (3.2.2)
+    rexml (3.2.5)
 
 PLATFORMS
   ruby
@@ -16,4 +16,3 @@ PLATFORMS
 DEPENDENCIES
   httparty
   rexml
-
